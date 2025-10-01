@@ -1,12 +1,11 @@
-# Containerfile (fixed to use a valid UBI 9 base tag)
-FROM registry.access.redhat.com/ubi9/ubi:9
+# Containerfile (using UBI 9 minimal from Docker Hub)
+FROM redhat/ubi9-minimal:latest
 
 # Install only cmake and gcc, then clean up
-RUN dnf -y update \
-    && dnf -y install --setopt=install_weak_deps=False \
+RUN microdnf -y update \
+    && microdnf -y install --setopt=install_weak_deps=0 \
        cmake \
        gcc \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
+    && microdnf clean all
 
 WORKDIR /workspace
