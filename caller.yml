@@ -1,0 +1,27 @@
+name: A-core APP CI/CD
+on: 
+  push:
+    branches-ignore: 
+      - 'doc/**'
+      - 'work/**'
+  pull_request:
+    branches-ignore: 
+      - 'doc/**'
+      - 'work/**'  
+  workflow_dispatch:
+    inputs:
+      bump-type:
+        description: 'Which bump fits?'     
+        required: false
+        type: choice
+        options:
+          - 'major'
+          - 'minor'
+          - 'patch'
+          - 'none'
+
+jobs:
+  call:
+    uses: XX9-YE-SONG/acore-cicd-templates/.github/workflows/acore--sdk-workflow.yml@main
+    with:
+      bump-type: ${{ inputs.bump-type }}
