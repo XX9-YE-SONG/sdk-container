@@ -1,4 +1,4 @@
-name: A-core APP CI/CD
+name: A-core sdk CI/CD
 on: 
   push:
     branches-ignore: 
