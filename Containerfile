@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install gcc and cmake
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-#        gcc \
+        gcc \
         cmake && \
     rm -rf /var/lib/apt/lists/*
 
