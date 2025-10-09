@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         gcc \
-        cmake && \
+ #       cmake && \
     rm -rf /var/lib/apt/lists/*
 
 # Set default shell
