@@ -1,0 +1,29 @@
+name: A-core sdk CI/CD
+on: 
+  push:
+    branches-ignore: 
+      - 'doc/**'
+      - 'work/**'
+  pull_request:
+    branches-ignore: 
+      - 'doc/**'
+      - 'work/**'  
+  workflow_dispatch:
+    inputs:
+      bump-type:
+        description: 'Which bump fits?'     
+        required: ture
+        type: choice
+        options:
+          - 'major'
+          - 'minor'
+          - 'patch'
+          - 'none'
+
+jobs:
+  call:
+    uses: XX9-YE-SONG/acore-cicd-templates/.github/workflows/acore-sdk-workflow.yml@main
+    with:
+      bump-type: ${{ inputs.bump-type }}
+      test-registry: ghcr.io/${{ github.repository_owner }}/acore-sdk-test
+      prod-registry: ghcr.io/${{ github.repository_owner }}/acore-sdk
