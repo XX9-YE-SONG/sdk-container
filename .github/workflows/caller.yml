@@ -19,13 +19,11 @@ on:
           - 'minor'
           - 'patch'
           - 'none'
-env:
-  ORG: ${{ github.repository_owner }}
 
 jobs:
   call:
-    uses: ${{ env.ORG }}/acore-cicd-templates/.github/workflows/acore-sdk-workflow.yml@main
+    uses: XX9-YE-SONG/acore-cicd-templates/.github/workflows/acore-sdk-workflow.yml@main
     with:
       bump-type: ${{ inputs.bump-type }}
-      test-registry: ghcr.io/${{ env.ORG }}/acore-sdk-test
-      prod-registry: ghcr.io/${{ env.ORG }}/acore-sdk
+      test-registry: ghcr.io/${{ github.repository_owner }}/acore-sdk-test
+      prod-registry: ghcr.io/${{ github.repository_owner }}/acore-sdk
