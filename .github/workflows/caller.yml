@@ -20,6 +20,11 @@ on:
           - 'patch'
           - 'none'
 
+# To prevent inconsistancy of git version tag
+concurrency:
+  group: ${{ github.ref == 'refs/heads/main' && 'main-branch' || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   call:
     if: github.event_name != 'push' || github.event.created == false
