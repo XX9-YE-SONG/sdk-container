@@ -19,6 +19,7 @@ on:
           - 'minor'
           - 'patch'
           - 'none'
+          - 'push to test'
 
 # To prevent inconsistancy of git version tag
 concurrency:
